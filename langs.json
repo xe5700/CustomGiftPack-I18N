@@ -1,0 +1,219 @@
+{
+  "plugin": "§a[CustomGiftPack]",
+  "core": {
+    "invfull":["",
+      {"text":"你的背包已满！已发送到你的物品到物品邮箱 ","bold":true,"color":"red"},
+      {"text":"点这里打开保险箱","bold":true,"color":"gold",
+        "clickEvent":{"action":"run_command","value":"/mailbox"},
+        "hoverEvent":{"action":"show_text","value":[{"text":"点击就可以打开哦","bold":true,"color":"blue"}]}},
+      {"text":" 你也可以稍后打开哦 输入/mailbox 命令即可打开  存储在里面的东西永远不会丢失的哦","color":"red"}
+    ],
+    "nospace":"§b你背包没位置了 你拿不了！",
+    "recived": ["§b你收到了 ","{item}"],
+    "send"   : ["§b你给予了 {player} ","{item}"],
+    "openadvbox": "§b打开邮箱"
+  },
+  "cmd": {
+    "callCmd": "§b点这里可以执行命令\n{cmd}",
+    "playeronly": "§b你不是玩家，你无法给自己物品。",
+    "help_header": "§a===============§b[自定义礼品包]§a===============",
+    "main_help":   [{"text": "{cmd}", "color": "red"}," §c查看命令帮助"],
+    "advbox":      [{"text": "{cmd}", "color": "red"}," §c查看我的物品保险柜"],
+    "kit":         [{"text": "{cmd}", "color": "red"}," §c使用礼品包"],
+    "editKit":     [{"text": "{cmd}", "color": "red"}," §c编辑礼品包"],
+    "code":        [{"text": "{cmd}", "color": "red"}," §c使用礼品码"],
+    "genCode":     [{"text": "{cmd}", "color": "red"}," §c生成礼品码"],
+    "give":        [{"text": "{cmd}", "color": "red"}," §c给予玩家物品"],
+    "bind":        [{"text": "{cmd}", "color": "red"}," §c灵魂绑定手中物品"],
+    "help_author": "§b作者：xjboss    §c版本：{version}",
+    "help_bottom": "§a==================={page}=====================",
+    "show_args": ["§b可使用 ","{cmd}","执行本命令"],
+    "wrong_args": ["§b命令 ","{cmd} ","参数错误，请检查你的参数。"],
+    "code_usage": "§b[礼品码]",
+    "player_not_exists": "§b玩家§a{player}§b不存在",
+    "args": {
+      "give": {
+        "player": "§3玩家名",
+        "id": "§3Minecraft格式物品名 比如minecraft:stone§a",
+        "bid": "§3Bukkit格式物品名 比如STONE§a",
+        "damage": "§3子ID/耐久§a",
+        "amount": "§3物品数量§a",
+        "soulbind": "§3启用灵魂绑定§a",
+        "expire": "§3灵魂绑定到期时间§a",
+        "nbt": "§3物品NBT标签§a",
+        "utag": "§3启用物品唯一标识符§a"
+      },
+      "bind": {
+        "not_player": "§b你不是玩家，无法绑定手中物品。",
+        "no_item_hand": "§b你手中没物品，你绑定空气呢？",
+        "player": "§3绑定的玩家名§a",
+        "expire": "§3灵魂绑定到期时间 比如1天1分钟 1d1m 支持d|h|m|s§a"
+      },
+      "kit": {
+        "edit": {
+          "count": "§3使用限制次数§a",
+          "utag": "§3启用物品唯一标识符§a",
+          "rm": "§3删除这个礼品包§a",
+          "cd": "§3使用冷却时间 比如1天1分钟 1d1m 支持d|h|m|s§a",
+          "perm": "§3所需权限§a",
+          "name": "§3名称§a",
+          "soulbind": "§3启用灵魂绑定§a",
+          "bind_expire": "§3灵魂绑定到期时间 比如1天1分钟 1d1m 支持d|h|m|s§a",
+          "amount": "§3数量§a",
+          "player": "§3玩家§a"
+        },
+        "use": {
+          "name": "§3名称§a",
+          "soulbind": "§3启用灵魂绑定§a",
+          "bind_expire": "§3灵魂绑定到期时间 比如1天1分钟 1d1m 支持d|h|m|s§a",
+          "amount": "§3数量§a",
+          "player": "§3玩家§a"
+        }
+      },
+      "code": {
+        "gen": {
+          "amount": "§3数量§a",
+          "type": "§3类型§a",
+          "cmd": "§3内容§a",
+          "expire": "§3使用到期时间 比如1天1分钟 1d1m 支持d|h|m|s§a",
+          "perm": "§3所需权限§a",
+          "count": "§3使用限制次数§a"
+        },
+        "use": {
+          "not_player": "§b你不是玩家，无法使用礼品码。",
+          "type_not_found": "§3找不到{type}类型的礼品码，无法使用。§a"
+        }
+      }
+    },
+    "pattern": {
+      "give": {
+        "player": "§3玩家名",
+        "id": "§3minecraft:stone",
+        "bid": "§3STONE",
+        "damage": "§3子ID/耐久",
+        "amount": "§3物品数量",
+        "nbt": "§3JSON NBT标签",
+        "utag": "§3启用物品唯一标识符"
+      },
+      "bind": {
+        "player": "§3玩家名"
+      },
+      "kit": {
+        "edit": {
+          "count": "§3礼包限制数",
+          "perm": "§3所需权限",
+          "name": "§3名称",
+          "player": "§3玩家"
+        },
+        "use": {
+          "name": "§3名称",
+          "amount": "§3数量",
+          "player": "§3玩家"
+        }
+      },
+      "code": {
+        "usage": "§3[礼品码]",
+        "gen": {
+          "amount": "§3数量",
+          "type": "§3类型",
+          "cmd": "§3内容",
+          "perm": "§3所需权限",
+          "count": "§3使用限制次数",
+          "desp": "§3注释"
+        }
+      }
+    }
+  },
+  "kit": {
+    "disabled": "§c礼品包模块已禁用",
+    "chest": {
+      "title":"§c正在编辑礼包:§b{name} {page_current} / {page_max} 页"
+    },
+    "create_success_player": "§b成功创建礼包{name},为你打开编辑界面。",
+    "create_success_console": "§b成功创建礼包{name}。",
+    "edit": "§b编辑礼包{name}"
+  },
+  "advbox": {
+    "title": "§b高级物品保险柜",
+    "itemlores": {
+      "uuid": "§b物品 UUID {}",
+      "date": "§b物品创建日期 {}",
+      "date_format": "uuuu年M月d日 H时m分ss秒"
+    },
+    "get": "§b物品已取出",
+    "delay": "§b冷却时间§c{}秒，请等待。",
+    "pages": "{} / {} 页"
+  },
+  "soulbind": {
+    "disabled": "§c灵魂绑定模块已禁用",
+    "item": {
+      "not_belong_to_you": "§c这个物品并不属于你",
+      "can_not_drop":"§c你不能丢弃灵魂绑定物品"
+    },
+    "args": {
+      "player": "§b物品绑定的玩家名",
+      "expire": "§b设置过期时间，比如一小时十秒1h10s"
+    },
+    "lores": {
+      "expire": "§b物品到期时间 {date}",
+      "expire_format": "uuuu年M月d日 H时m分ss秒",
+      "player": "§b此物品已被玩家§a{player}§b所绑定"
+    }
+  },
+  "dbmanager": {
+    "config_load_err": "§c数据库配置文件错误！",
+    "config_init_err": "§c数据库初始化错误！"
+  },
+  "timeunit": {
+    "seconds": "秒",
+    "minites": "分钟",
+    "hours": "小时",
+    "days": "天",
+    "second": "秒",
+    "minite": "分钟",
+    "hour": "小时",
+    "day": "天"
+  },
+  "code": {
+    "gen": {
+      "success": ["§b成功生成§a{amount}个 §b{desp} 礼品码，",{
+        "text": "{content}",
+        "bold":true,
+        "color":"red"
+      }],
+      "failed": "礼品码生成失败",
+      "clickContent": "点击查看礼品内容",
+      "content": "§3内容：§a{content}",
+      "log_file_format": "生成日期 uuuu年M月d日 生成时间 H时m分ss秒mm毫秒",
+      "log_gen_success": "§b成功导出文件到§c{path}§3,请你打开文件开始安排这些礼品码吧！"
+    },
+    "use": {
+      "code_not_exists": "§3礼品码§c {code} 不存在，请确认你输入了正确的礼品码。",
+      "is_used": "§3礼品码§c {code} 已在{datetime}被使用，请使用其它礼品码。 ",
+      "is_used_by": "§3礼品码§c {code} 已被{player}在 {datetime} 使用，请使用其它礼品码。 ",
+      "used_time_format": "uuuu年M月d日 H时m分ss秒"
+    },
+    "success": "§3成功使用礼品码§b{code}§3 得到了§b{desp}",
+    "types:": {
+      "cmd": "命令",
+      "pcmd": "玩家命令",
+      "kit": "礼包",
+      "sudo": "玩家运行管理员命令"
+    },
+    "output_formats": {
+      "log": "输出日志",
+      "sender": "输出给玩家",
+      "console": "输出在后台",
+      "none": "不输出"
+    },
+    "captcha_is_wrong": "验证码认证没有通过，无法使用礼品码"
+  },
+  "captcha": {
+    "name": "§b自定义礼品包验证码",
+    "lore": "§b请通过输入/captcha [验证码] 来通过验证码验证",
+    "checking_captcha": "§b你有其它需要验证验证码的操作未完成，请先完成验证。",
+    "canceld": "§b你取消了验证码验证，操作失败！",
+    "wrong_captcha": "§b验证码{captcha}无法通过验证，请重新输入。",
+    "right_captcha": "§b验证码{captcha}是正确的，已通过验证。"
+  }
+}
